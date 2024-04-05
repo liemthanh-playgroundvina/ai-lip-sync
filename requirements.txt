@@ -35,6 +35,6 @@ insightface==0.7.3
 #onnxruntime-gpu==1.15.0
 opencv-python>=4.8.0
 ifnude
-basicsr==1.4.2
+basicsr
 facexlib>=0.2.5
 moviepy==1.0.3
