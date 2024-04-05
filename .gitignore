@@ -13,11 +13,13 @@
 /static
 *=*
 *.log
+*.partial
+*.zip
 
 demo/*
 **/__pycache__/
 scripts/wav2lip/checkpoints/wav2lip_gan.pth
-scripts/wav2lip/checkpoints/wav2lip.pth
+gfpgan/weights/wav2lip.pth
 scripts/wav2lip/checkpoints/visual_quality_disc_.pth
 scripts/wav2lip/checkpoints/lipsync_expert_.pth
 scripts/wav2lip/face_detection/detection/sfd/s3fd.pth
