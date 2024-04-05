@@ -1,10 +1,24 @@
+# AI LIP SYNC
+- Link: https://github.com/numz/sd-wav2lip-uhq
+
+- Queue System using celery(python) + redis + rabbitMQ
+
+- Image information: Python 3.11
 
 
-https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/13985
+1. Clone & download model
+```# command
+git clone https://github.com/liemthanh-playgroundvina/ai-lip-sync
+cd ai-lip-sync
+make download_model
+```
 
-Replace /venv/lib/python3.10/site-packages/basicsr/data/degradations.py from at line 8:
-from torchvision.transforms.functional_tensor import rgb_to_grayscale
-to:
-from torchvision.transforms.functional import rgb_to_grayscale
+2. Build Image
+```# command
+make build
+```
 
-mapping: /venv/lib/python3.10/site-packages/basicsr/data/degradations.py:./models/degradation.py
+3. Start
+```# command
+make start
+```
