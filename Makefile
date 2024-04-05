@@ -5,6 +5,10 @@ download_model:
 	mv ./gfpgan/weights/s3fd.pth ./scripts/wav2lip/face_detection/detection/sfd
 	mv ./gfpgan/weights/shape_predictor_68_face_landmarks.dat ./scripts/wav2lip/predicator
 
+config:
+	cp configs/env.example configs/.env
+	# And add params ...
+
 # Docker
 build:
 	docker pull python:3.11-slim-bullseye
@@ -14,8 +18,19 @@ start:
 	docker compose -f docker-compose.yml down
 	docker compose -f docker-compose.yml up -d
 
+start-prod:
+	docker compose -f docker-compose-prod.yml down
+	docker compose -f docker-compose-prod.yml up -d
+
 stop:
 	docker compose -f docker-compose.yml down
 
-#cmd-image:
-#	docker run -it --gpus all --rm ai-cover-gen /bin/bash
+stop-prod:
+	docker compose -f docker-compose-prod.yml down
+
+# Checker
+cmd-image:
+	docker run -it --gpus all --rm ai-lip-sync /bin/bash
+
+cmd-worker:
+	docker compose exec worker-ai-lip-sync /bin/bash
