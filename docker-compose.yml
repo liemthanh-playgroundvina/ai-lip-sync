@@ -19,12 +19,9 @@ services:
       resources:
         reservations:
           devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [ gpu ]
-      # limits:
-      #   cpus: '0.50'
-      #   memory: 2G
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
 
 volumes:
   "app-public-volume-v2":
