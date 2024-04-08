@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.9'
 
 services:
   worker-ai-lip-sync:
@@ -19,9 +19,9 @@ services:
       resources:
         reservations:
           devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [ gpu ]
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
       # limits:
       #   cpus: '0.50'
       #   memory: 2G
