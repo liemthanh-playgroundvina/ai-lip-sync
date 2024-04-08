@@ -82,14 +82,22 @@ class Wav2LipUHQ:
         self.execute_command(command)
 
     def add_audio_to_video(self, wav2lip_file_name):
-        command = [self.ffmpeg_binary, "-y", "-i", self.wav2lip_folder + "/output/video.mp4", "-i",
-                   self.wav2lip_folder + "/output/output_audio.aac", "-c:v", "copy", "-c:a", "aac", "-strict",
-                   "experimental", self.wav2lip_folder + f"/output/{wav2lip_file_name}"]
+        command = [
+            self.ffmpeg_binary, "-y", "-i",
+            f"{self.wav2lip_folder}/output/video.mp4", "-i",
+            f"{self.wav2lip_folder}/output/output_audio.aac", "-c:v", "copy", "-c:a", "aac", "-strict",
+            "experimental", "-movflags", "+faststart",
+            f"{self.wav2lip_folder}/output/{wav2lip_file_name}"
+        ]
         self.execute_command(command)
 
-        command = [self.ffmpeg_binary, "-y", "-i", self.wav2lip_folder + "/output/video_enhanced.mp4", "-i",
-                   self.wav2lip_folder + "/output/output_audio.aac", "-c:v", "copy", "-c:a", "aac", "-strict",
-                   "experimental", self.wav2lip_folder + "/output/output_video_enhanced.mp4"]
+        command = [
+            self.ffmpeg_binary, "-y", "-i",
+            f"{self.wav2lip_folder}/output/video_enhanced.mp4", "-i",
+            f"{self.wav2lip_folder}/output/output_audio.aac", "-c:v", "copy", "-c:a", "aac", "-strict",
+            "experimental", "-movflags", "+faststart",
+            f"{self.wav2lip_folder}/output/output_video_enhanced.mp4"
+        ]
         self.execute_command(command)
 
     def initialize_dlib_predictor(self):
