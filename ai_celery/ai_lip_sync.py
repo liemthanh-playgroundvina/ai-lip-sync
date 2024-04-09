@@ -82,7 +82,10 @@ def ai_lip_sync_task(self, task_id: str, data: bytes, task_request: bytes, file:
         response = {"url_file": url_file, "metadata": metadata}
         Celery_RedisClient.success(task_id, data, response)
         return
-
+    except ValueError as e:
+        err = {'code': "400", 'message': str(e).split('!')[0].strip()}
+        Celery_RedisClient.failed(task_id, data, err)
+        return
     except Exception as e:
         print(str(e))
         err = {'code': "500", 'message': "Internal Server Error"}
